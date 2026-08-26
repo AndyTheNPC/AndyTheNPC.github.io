@@ -11,85 +11,388 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
-            background: #0b0b0b;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(124, 131, 255, 0.18),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 10% 50%,
+                    rgba(0, 0, 194, 0.10),
+                    transparent 35%
+                ),
+                #080914;
+
             color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+
+            padding: 40px 20px;
         }
 
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
         .container {
+            position: relative;
+
             width: 100%;
             max-width: 1000px;
+
+            margin: 0 auto;
+
             text-align: center;
         }
 
-        h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            margin-bottom: 35px;
         }
 
-        p {
-            color: #aaa;
-            font-size: 18px;
-            margin-bottom: 30px;
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 15px;
+            padding: 7px 15px;
+
+            border-radius: 999px;
+
+            background: rgba(124, 131, 255, 0.10);
+            border: 1px solid rgba(124, 131, 255, 0.22);
+
+            color: #aeb3ff;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(40px, 7vw, 68px);
+            line-height: 1;
+
+            font-weight: 900;
+            letter-spacing: -2px;
+
+            text-shadow:
+                0 0 35px rgba(124, 131, 255, 0.15);
+        }
+
+        h1 span {
+            color: #7c83ff;
+
+            text-shadow:
+                0 0 30px rgba(124, 131, 255, 0.35);
+        }
+
+        .subtitle {
+            max-width: 650px;
+
+            margin: 22px auto 0;
+
+            color: rgba(255, 255, 255, 0.60);
+
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           VIDEO CARD
+        ========================= */
+
+        .video-card {
+            position: relative;
+
+            padding: 10px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.07),
+                    rgba(255,255,255,0.025)
+                );
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+
+            overflow: hidden;
+        }
+
+        .video-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            top: -220px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: #7c83ff;
+
+            opacity: 0.10;
+
+            filter: blur(80px);
+
+            pointer-events: none;
         }
 
         .video {
             position: relative;
+
             width: 100%;
+
             aspect-ratio: 16 / 9;
+
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,.6);
+
+            border-radius: 17px;
+
+            background: #000;
+
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.55);
         }
 
         iframe {
             width: 100%;
             height: 100%;
+
             border: 0;
         }
 
-        .footer {
+        /* =========================
+           SCAM STORY CARD
+        ========================= */
+
+        .scam-link {
+            position: relative;
+
             margin-top: 25px;
-            color: #666;
+
+            padding: 28px 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.02)
+                );
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .scam-link:hover {
+            transform: translateY(-3px);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(124,131,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border-color: rgba(124,131,255,0.25);
+        }
+
+        .scam-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .scam-link p {
+            margin: 0 0 12px;
+
+            color: rgba(255,255,255,0.75);
+
+            font-size: 16px;
+        }
+
+        .scam-link a {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 20px;
+
+            border-radius: 12px;
+
+            background: rgba(124,131,255,0.12);
+
+            border: 1px solid rgba(124,131,255,0.25);
+
+            color: #aeb3ff;
+
+            text-decoration: none;
+
             font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .scam-link a:hover {
+            background: #7c83ff;
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            margin-top: 35px;
+
+            color: rgba(255,255,255,0.25);
+
+            font-size: 12px;
+
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 25px 15px;
+            }
+
+            .header {
+                margin-bottom: 25px;
+            }
+
+            h1 {
+                font-size: clamp(38px, 12vw, 55px);
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .video-card {
+                padding: 7px;
+                border-radius: 19px;
+            }
+
+            .video {
+                border-radius: 13px;
+            }
+
+            .scam-link {
+                padding: 24px 18px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <main class="container">
 
-        <h1>💙 A little something for Zinxy</h1>
+        <!-- HEADER -->
 
-        <div class="video">
-            <iframe
-                src="https://www.youtube.com/embed/CjruBz8KDwY"
-                title="Zinxy Come Home"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
+        <header class="header">
 
-        <div class="scam-link">
-    <p>Think AndyTheNPC is a scammer?</p>
-    <a href="https://zinxcomehome.org/THE-SCAM">
-        View the evidence &amp; read the full story →
-    </a>
-</div>
+            <div class="eyebrow">
+                💙 A MESSAGE FOR ZINXY
+            </div>
 
-        <div class="footer">
+            <h1>
+                Zinxy <span>Come Home</span>
+            </h1>
+
+            <p class="subtitle">
+                Sometimes you just have to make an entire website
+                about it.
+            </p>
+
+        </header>
+
+
+        <!-- VIDEO -->
+
+        <section class="video-card">
+
+            <div class="video">
+
+                <iframe
+                    src="https://www.youtube.com/embed/CjruBz8KDwY"
+                    title="Zinxy Come Home"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- STORY -->
+
+        <section class="scam-link">
+
+            <div class="scam-icon">
+                🔎
+            </div>
+
+            <p>
+                Think <strong>AndyTheNPC</strong> is a scammer?
+            </p>
+
+            <a href="https://zinxcomehome.org/THE-SCAM">
+                View the evidence &amp; read the full story →
+            </a>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
             zinxycomehome.org
-        </div>
+        </footer>
 
-    </div>
+    </main>
 
 </body>
 </html>
